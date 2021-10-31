@@ -1,0 +1,15 @@
+<h1>Listing Todos</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Task</th>
+    </tr>
+    <%= for todo <- @todos do %>
+    <tr>
+        <td>(<%= todo.id %>)</td>
+        <td>- <%= todo.title %></td>
+    <td><%= link "Done", to: Routes.todo_path(@conn, :delete, todo.id) %></td>
+    <td><%= link "Edit", to: Routes.todo_path(@conn, :update, todo.id) %></td>
+    </tr>
+    <% end %>
+</table>

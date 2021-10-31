@@ -1,0 +1,7 @@
+<%= form_for @changeset, Routes.todo_path(@conn, :create), fn f -> %>
+  <label>
+    task: <%= text_input f, :title %>
+  </label>
+
+  <%= submit "Add" %>
+<% end %>
