@@ -1,9 +1,10 @@
-<%= form_for @changeset, Routes.todo_path(@conn, :create), fn f -> %>
+<h1>Editing Task</h1>
+<%= form_for @changeset, Routes.todo_path(@conn, :update, @todo), fn f -> %>
   <label>
     Task: <%= text_input f, :title %>
   </label>
 
-  <%= submit "Add" %>
+  <%= submit "Save" %>
 <% end %>
 
 <%= link "Back", to: Routes.todo_path(@conn, :index) %>

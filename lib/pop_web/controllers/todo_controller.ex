@@ -19,13 +19,26 @@ defmodule PopWeb.TodoController do
     redirect(conn, to: Routes.todo_path(conn, :index))
   end
 
-  # def delete(conn, %{"struct" => %{"id" => todo_params}}) do
-  #   Todos.delete_todo(todo_params)
+  def show(conn, %{"id" => id}) do
+    todo = Todos.get_todo(id)
+    render(conn, "show.html", todo: todo)
+  end
 
-  # end
+  def delete(conn, %{"id" => id}) do
+    todo = Todos.get_todo(id)
+    Todos.delete_todo(todo)
+    redirect(conn, to: Routes.todo_path(conn, :index))
+  end
 
-  def update(conn, %{"id" => id, "title" => task}) do
-    Todos.update_todo(id, task)
+  def edit(conn, %{"id" => id}) do
+    todo = Todos.get_todo((id))
+    changeset = Struct.changeset(%Struct{})
+    render(conn, "edit.html", changeset: changeset, todo: todo)
+  end
+
+  def update(conn, %{"id" => id, "todo" => updated_task}) do
+    todo = Todos.get_todo(id)
+    Todos.update_todo(todo, updated_task)
     redirect(conn, to: Routes.todo_path(conn, :index))
   end
 end

@@ -1,0 +1,5 @@
+<h1>Show User</h1>
+
+<h3>Task</h3>
+<%= @todo.title %>
+<span> <%= link "Back", to: Routes.todo_path(@conn, :index) %> </span>

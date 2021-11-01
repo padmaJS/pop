@@ -9,6 +9,8 @@ defmodule Pop.Todos.Struct do
   end
 
   def changeset(todo, attrs \\ %{}) do
-    cast(todo, attrs, [:title])
+    todo
+    |> cast(attrs, [:title])
+    |> validate_required([:title])
   end
 end

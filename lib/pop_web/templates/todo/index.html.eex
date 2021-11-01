@@ -1,4 +1,6 @@
 <h1>Listing Todos</h1>
+<br>
+<span> <%= link "Add New", to: Routes.todo_path(@conn, :new) %> </span>
 <table>
     <tr>
         <th>ID</th>
@@ -8,8 +10,8 @@
     <tr>
         <td>(<%= todo.id %>)</td>
         <td>- <%= todo.title %></td>
-    <td><%= link "Done", to: Routes.todo_path(@conn, :delete, todo.id) %></td>
-    <td><%= link "Edit", to: Routes.todo_path(@conn, :update, todo.id) %></td>
+    <td><%= link "Done", to: Routes.todo_path(@conn, :delete, todo), method: :delete %></td>
+    <td><%= link "Edit", to: Routes.todo_path(@conn, :edit, todo) %></td>
     </tr>
     <% end %>
 </table>
