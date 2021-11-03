@@ -31,12 +31,12 @@ defmodule PopWeb.TodoController do
   end
 
   def edit(conn, %{"id" => id}) do
-    todo = Todos.get_todo((id))
-    changeset = Struct.changeset(%Struct{})
+    todo = Todos.get_todo(id)
+    changeset = Struct.changeset(todo)
     render(conn, "edit.html", changeset: changeset, todo: todo)
   end
 
-  def update(conn, %{"id" => id, "todo" => updated_task}) do
+  def update(conn, %{"id" => id, "struct" => updated_task}) do
     todo = Todos.get_todo(id)
     Todos.update_todo(todo, updated_task)
     redirect(conn, to: Routes.todo_path(conn, :index))

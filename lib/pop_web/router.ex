@@ -19,7 +19,7 @@ defmodule PopWeb.Router do
 
     get "/", PageController, :index
 
-    resources "/pop", TodoController
+    resources "/pop", TodoController!
   end
 
   # Other scopes may use custom stacks.
